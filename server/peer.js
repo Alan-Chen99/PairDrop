@@ -86,6 +86,8 @@ export default class Peer {
     }
 
     ipIsPrivate(ip) {
+        return true;
+
         // if ip is IPv4
         if (!ip.includes(":")) {
             //         10.0.0.0 - 10.255.255.255        ||   172.16.0.0 - 172.31.255.255                          ||    192.168.0.0 - 192.168.255.255
@@ -137,8 +139,9 @@ export default class Peer {
     }
 
     _setRtcSupported(request) {
-        const searchParams = new URL(request.url, "http://server").searchParams;
-        this.rtcSupported = searchParams.get('webrtc_supported') === "true";
+        this.rtcSupported = false;
+        // const searchParams = new URL(request.url, "http://server").searchParams;
+        // this.rtcSupported = searchParams.get('webrtc_supported') === "true";
     }
 
     _setName(req) {
